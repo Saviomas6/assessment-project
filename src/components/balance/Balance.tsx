@@ -9,7 +9,6 @@ import { convertToEther, convertToWei } from "../../utils/helpers";
 const Balance = () => {
   const { account } = useWeb3React();
   const [name, setName] = useState<string>("");
-  const [convertWei, setConvertWei] = useState<string>("");
 
   //Qusetion No 3
   const withoutWalletConnect = async () => {
