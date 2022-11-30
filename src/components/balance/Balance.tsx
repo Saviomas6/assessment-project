@@ -32,7 +32,7 @@ const Balance = () => {
       allowance = new BigNumber(allowance).dividedBy(10 ** 18);
       console.log(allowance.toString());
       await tokenInstance.methods
-        .approve(contractAddress, "1000000000000000")
+        .approve(contractAddress, "1000000000000000000")
         .send({ from: account })
         .on("hash", (hash: any) => {
           alert(hash);
