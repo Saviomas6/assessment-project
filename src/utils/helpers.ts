@@ -11,6 +11,11 @@ export const convertToEther = (values: number | string) => {
   return convertToEther;
 };
 
+export const convertToWei = (values: number | string) => {
+  const ConvertToWei = new BigNumber(values).multipliedBy(10 ** 18).toFixed();
+  return ConvertToWei;
+};
+
 export const network = (chainID: number) => {
   if (chainID === 1) {
     return "Mainnet";

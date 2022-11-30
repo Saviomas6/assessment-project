@@ -1,7 +1,7 @@
 import { useWeb3React } from "@web3-react/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { useCallback, useState } from "react";
-import web3 from "../../blockchain/web3";
+
 import { convertToEther, network, shorten } from "../../utils/helpers";
 import CustomModal from "../customModal/CustomModal";
 import {
