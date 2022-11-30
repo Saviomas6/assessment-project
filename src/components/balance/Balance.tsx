@@ -152,7 +152,7 @@ const Balance = () => {
       <br />
       <HeaderButton onClick={estimateGas}>Estimate Gas</HeaderButton>
       <br />
-      <div>{bigNumberOperation(200000000000000, 3000000000000)}</div>
+      <div>{bigNumberOperation(2, 4)}</div>
     </div>
   );
 };
