@@ -31,3 +31,26 @@ export const network = (chainID: number) => {
     return "UnSupported Network";
   }
 };
+
+export const checkMetamask = () => {
+  if (typeof window !== "undefined") {
+    const { ethereum } = window as any;
+    if (ethereum?.isMetaMask) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+};
+
+export const clearCoinbaseInfo = [
+  "-walletlink:https://www.walletlink.org:version",
+  "-walletlink:https://www.walletlink.org:session:id",
+  "-walletlink:https://www.walletlink.org:session:secret",
+  "-walletlink:https://www.walletlink.org:session:linked",
+  "-walletlink:https://www.walletlink.org:walletUsername",
+  "-walletlink:https://www.walletlink.org:AppVersion",
+  "-walletlink:https://www.walletlink.org:DefaultJsonRpcUrl",
+  "-walletlink:https://www.walletlink.org:DefaultChainId",
+  "-walletlink:https://www.walletlink.org:Addresses",
+];

@@ -10,15 +10,15 @@ import metamask from "../../assets/images/metamask.svg";
 import walletConnectLogo from "../../assets/images/walletConnectLogo.svg";
 import coinbaseLogo from "../../assets/images/coinbaseLogo.svg";
 import { useWeb3React } from "@web3-react/core";
-import { connectors, Injected } from "../../utils/connector";
+import { connectors } from "../../utils/connector";
 import CustomModal from "../customModal/CustomModal";
+import { checkMetamask } from "../../utils/helpers";
 interface I_WalletModal {
   isModalOpen: boolean;
   setModalOpen(value: boolean): void;
 }
 const WalletModal = ({ isModalOpen, setModalOpen }: I_WalletModal) => {
   const { activate } = useWeb3React();
-
   const setProvider = (type: string) => {
     window.localStorage.setItem("provider", type);
   };
@@ -30,9 +30,14 @@ const WalletModal = ({ isModalOpen, setModalOpen }: I_WalletModal) => {
         <WalletMainLayout>
           <WalletContainer
             onClick={() => {
-              activate(connectors?.injected);
-              setProvider("injected");
-              setModalOpen(false);
+              if (checkMetamask()) {
+                activate(connectors?.injected);
+                setProvider("injected");
+                setModalOpen(false);
+                console.log("MetaMask");
+              } else {
+                setModalOpen(false);
+              }
             }}
           >
             <WalletLogoContainer>

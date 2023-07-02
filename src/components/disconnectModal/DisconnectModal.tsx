@@ -1,8 +1,13 @@
 import { useWeb3React } from "@web3-react/core";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
-import { convertToEther, network, shorten } from "../../utils/helpers";
+import {
+  clearCoinbaseInfo,
+  convertToEther,
+  network,
+  shorten,
+} from "../../utils/helpers";
 import CustomModal from "../customModal/CustomModal";
 import {
   Address,
@@ -23,8 +28,13 @@ const DisconnectModal = ({ isModalOpen, setModalOpen }: I_Disconnect) => {
   const { account, chainId, deactivate, connector, library } = useWeb3React();
 
   const Disconnect = () => {
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("provider");
+    }
+    // clearCoinbaseInfo?.map((info: any) => {
+    //   window.localStorage.removeItem(info);
+    // });
     deactivate();
-    localStorage.clear();
     setModalOpen(!isModalOpen);
     if (connector instanceof WalletConnectConnector) {
       connector.walletConnectProvider = undefined;
